@@ -17,32 +17,6 @@ A sophisticated multi-agent system that generates a travel itinerary enriched wi
 *   **Claude CLI Integration**: Leverages the `claude` CLI in headless mode for all agent reasoning, ensuring high-quality outputs.
 *   **Concurrency**: All agents run in parallel threads for efficient processing.
 
-## 🏗️ Architecture
-
-The system follows a modular pipeline architecture:
-
-```mermaid
-graph TD
-    User[User Input] --> UI[Streamlit UI]
-    UI --> Engine[TravelGuideEngine]
-    Engine --> Mapper[RouteFinder (ORS)]
-    Mapper --> Scheduler
-    Scheduler --> TaskQueue
-    
-    subgraph "Agent Cluster (Parallel)"
-        TaskQueue --> Y[YouTube Agent]
-        TaskQueue --> M[Music Agent]
-        TaskQueue --> H[History Agent]
-        
-        Y -->|Candidate| JudgeQueue
-        M -->|Candidate| JudgeQueue
-        H -->|Candidate| JudgeQueue
-    end
-    
-    JudgeQueue --> J[Judge Agent]
-    J -->|Selected Content| Collector
-    Collector --> UI
-```
 
 ## 📸 Screenshots
 
